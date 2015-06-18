@@ -34,7 +34,13 @@ from runner.koan import *
 
 def score(dice):
     # You need to write this method
-    pass
+    sc = 0
+    sc += (1000*(dice.count(1)//3) + 100*(dice.count(1)%3))
+    for x in range(2,7):
+        sc += 100*x*(dice.count(x)//3)
+    sc += 50*(dice.count(5)%3)
+
+    return sc
 
 class AboutScoringProject(Koan):
     def test_score_of_an_empty_list_is_zero(self):
